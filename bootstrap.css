@@ -1,0 +1,11 @@
+.wrap-grey-box {
+	background: grey;
+}
+.card-columns {
+	column-count: 3;
+}
+.flexdiv {
+	display: flex;
+	flex-direction: row;
+	align-items: unset;
+}
