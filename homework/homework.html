@@ -22,28 +22,58 @@
 		}
 		.image2 {background-size: cover;
 			width: 500px
-			height 300px;}
+			height 300px
+			display: inline;}
 
 		</style>
+		<script type="text/javascript">
+			
+
+			
+			function hey(){
+				let name = $('#order_name').val();
+				let address = $('#order_address').val();
+				let size = $('#order_size').val();
+				let count = $('#order_count').val();
+				let phone = $('#order_phone').val();
+				console.log(size);
+				if (name == ''){
+					alert('이름을 입력하세요!');
+				} else if (address == '') {
+					alert('주소를 입력하세요!');
+				} else if (phone == '') { 
+					alert('전화번호를 입력하세요!'); 
+				} else if (size == '') {
+					alert('사이즈를 입력하세요!');
+				}	else {
+					alert('주문 완료!');
+				}
+			}
+
+
+
+		</script>
+
 	</head>
+
 	<body>
 		<img class="image" src="https://t1.daumcdn.net/cfile/tistory/2425A9455747DAB308"/> 
 		<p> <img class="image2" src="http://img.danawa.com/prod_img/500000/322/893/img/8893322_1.jpg?shrink=500:500&_v=20190729180101"> </p>
 		<h1>나이키 머큐리얼 베이퍼</h1>
 		<h2>가격: 150000원</h2>
 		<p>
-			<input type="text" class="form-control" placeholder="주문자 이름" aria-label="주문자 이름" aria-describedby="basic-addon1"> </p>
+			<input type="text" id='order_name'class="form-control" placeholder="주문자 이름" aria-label="주문자 이름" aria-describedby="basic-addon1"> </p>
 			<p>
-				<input type="text" class="form-control" placeholder="주소" aria-label="주소소" aria-describedby="basic-addon1"> </p>
+				<input type="text" id='order_address' class="form-control" placeholder="주소" aria-label="주소" aria-describedby="basic-addon1"> </p>
 				<p>
-					<input type="text" class="form-control" placeholder="전화번호" aria-label="전화번호" aria-describedby="basic-addon1"> 
+					<input type="text" id='order_phone' class="form-control" placeholder="전화번호" aria-label="전화번호" aria-describedby="basic-addon1"> 
 				</p>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
-						<label class="input-group-text" for="inputGroupSelect01">사이즈</label>
+						<label class="input-group-text" id='order_size' for="inputGroupSelect01">사이즈</label>
 					</div>
-					<select class="custom-select" id="inputGroupSelect01">
-						<option selected>선택
+					<select class="custom-select" id='order_size'>
+						<option>선택
 						</option>
 						<option value="1">260</option>
 						<option value="2">270</option>
@@ -53,7 +83,7 @@
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
-						<label class="input-group-text" for="inputGroupSelect01">수량</label>
+						<label class="input-group-text">수량</label>
 					</div>
 					<select class="custom-select" id="inputGroupSelect01">
 						<option selected>선택</option>
@@ -65,7 +95,8 @@
 				</div>
 
 				<div>
-					<button type="button" class="btn btn-primary">주문하기</button>		
+					<button onclick="hey()" type="button" class="btn btn-primary">주문하기</button>		
+
 				</div>
 			</body>
 			</html>
