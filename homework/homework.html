@@ -27,6 +27,12 @@
 
 		</style>
 		<script type="text/javascript">
+
+			function isCellPhone(p) {
+				var regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[-][0-9]{3,4}[-][0-9]{4}$/;
+				return regExp.test(p);
+			}
+
 			
 
 			
@@ -43,9 +49,17 @@
 					alert('주소를 입력하세요!');
 				} else if (phone == '') { 
 					alert('전화번호를 입력하세요!'); 
+				} else if (!isCellPhone(phone)) {
+					alert('휴대폰번호 입력 형식이 틀립니다. \n 010-0000-0000으로 입력해주세요')
+					
+
+
 				} else if (size == '') {
 					alert('사이즈를 입력하세요!');
-				}	else {
+				} else if (count == '') { 
+					alert('수량을 입력하세요!');
+				} 
+				else {
 					alert('주문 완료!');
 				}
 			}
@@ -70,10 +84,10 @@
 				</p>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
-						<label class="input-group-text" id='order_size' for="inputGroupSelect01">사이즈</label>
+						<label class="input-group-text" for="inputGroupSelect01">사이즈</label>
 					</div>
 					<select class="custom-select" id='order_size'>
-						<option>선택
+						<option selected value = "">선택
 						</option>
 						<option value="1">260</option>
 						<option value="2">270</option>
@@ -85,8 +99,8 @@
 					<div class="input-group-prepend">
 						<label class="input-group-text">수량</label>
 					</div>
-					<select class="custom-select" id="inputGroupSelect01">
-						<option selected>선택</option>
+					<select class="custom-select" id="order_count">
+						<option selected value = "">선택</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
