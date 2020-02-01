@@ -51,9 +51,6 @@
 					alert('전화번호를 입력하세요!'); 
 				} else if (!isCellPhone(phone)) {
 					alert('휴대폰번호 입력 형식이 틀립니다. \n 010-0000-0000으로 입력해주세요')
-					
-
-
 				} else if (size == '') {
 					alert('사이즈를 입력하세요!');
 				} else if (count == '') { 
@@ -64,9 +61,43 @@
 				}
 			}
 
+			
+			$(document).ready(function(){
+				$('#orders-box').html('');
+				listing();
+			});
 
+			function listing() {
+				$.ajax({
+					type: "GET",
+					url: "http://spartacodingclub.shop/order",
+					data: {},
+					success: function(response){
+						if (response['result'] == 'success') {
+							let orders = response['orders'];
+							console.log(orders);
+							for (let i = 0; i < orders.length; i++) {
+								make_card(orders[i]['name'],orders[i]['count'],orders[i]['address'],orders[i]['phone'])
+							}
+						} else {
+							alert('기사를 받아오지 못했습니다');
+						}
+					}
+				})
+			}
 
+			function make_card(name,count,address,phone) {
+				let temp_html = '<tr>\
+				<td>'+name+'</td>\
+				<td>'+count+'</td>\
+				<td>'+address+'</td>\
+				<td>'+phone+'</td>\
+				</tr>';
+				$('#orders-box').append(temp_html);
+			}
 		</script>
+
+
 
 	</head>
 
@@ -112,5 +143,26 @@
 					<button onclick="hey()" type="button" class="btn btn-primary">주문하기</button>		
 
 				</div>
-			</body>
-			</html>
+				<div class = "orders">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">이름</th>
+								<th scope="col">수량</th>
+								<th scope="col">주소</th>
+								<th scope="col">전화번호</th>
+							</tr>
+						</thead>
+						<tbody id="orders-box">
+							<tr/>
+							<td>''</td>
+							<td>''</td>
+							<td>''</td>
+							<td>''</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</body>
+		</html>
